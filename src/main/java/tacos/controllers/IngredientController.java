@@ -72,7 +72,7 @@ public class IngredientController {
 			ingriedientService.delete(id);
 			return new ResponseEntity<Ingredient>(HttpStatus.OK);
 		}
-		else return new ResponseEntity<Ingredient>(HttpStatus.NOT_FOUND);
+		else return new ResponseEntity<Ingredient>(HttpStatus.NO_CONTENT);
 	}
 
 }

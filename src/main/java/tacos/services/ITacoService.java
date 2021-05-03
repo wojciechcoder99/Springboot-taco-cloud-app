@@ -12,6 +12,7 @@ public interface ITacoService {
 	 Taco update(Taco taco);
 	 void delete(long id);
 	 boolean isExists(long id);
+	 boolean areIngredientsExist(Taco taco);
 	
 
 }

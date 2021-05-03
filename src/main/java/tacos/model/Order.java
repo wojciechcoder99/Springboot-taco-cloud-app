@@ -19,12 +19,21 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
+@RequiredArgsConstructor
 @Entity
 @Table(name = "Taco_Order")
 public class Order implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -46,12 +55,7 @@ public class Order implements Serializable {
 	@Digits(integer = 3, fraction = 0, message = "Zły kod")
 	private String ccCVV;
 	@ManyToMany(targetEntity = Taco.class) 
-	private List<Taco> tacos = new ArrayList<>();
-	@ManyToOne
-	//private User user;
-	public void addDesign(Taco design) {
-	    this.tacos.add(design);
-	}
+	private List<Taco> tacos;
 	 @PrePersist
 	  void placedAt() {
 		  this.placedAt = new Date();

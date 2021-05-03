@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tacos.model.Taco;
+import tacos.repositories.IngredientRepository;
 import tacos.repositories.TacoRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class TacoSerivceImpl implements ITacoService {
 	
 	@Autowired
 	private TacoRepository tacoRepository;
+	
+	@Autowired
+	private IngredientRepository ingredientRepository;
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -56,6 +60,12 @@ public class TacoSerivceImpl implements ITacoService {
 	@Override
 	public boolean isExists(long id) {
 		return tacoRepository.existsById(id);
+	}
+	
+	@Override
+	public boolean areIngredientsExist(Taco taco) {
+		return taco.getIngredients().stream()
+				.allMatch(ing -> ingredientRepository.existsById(ing.getId()) == true);
 	}
 
 }
