@@ -19,7 +19,7 @@ public class Ingredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private final String name;
+	private String name;
 	private final Type type;
 	
 	public static enum Type {

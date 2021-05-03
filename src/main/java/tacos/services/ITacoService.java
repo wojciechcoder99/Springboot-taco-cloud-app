@@ -6,10 +6,12 @@ import tacos.model.Taco;
 
 @Service
 public interface ITacoService {
-	public Taco save(Taco taco);
-	public Taco getTaco(long id);
-	public Iterable<Taco> getTacos();
-	public Taco update(Taco taco);
-	public void delete(long id);
+	 Taco save(Taco taco);
+	 Taco getTaco(long id);
+	 Iterable<Taco> getTacos();
+	 Taco update(Taco taco);
+	 void delete(long id);
+	 boolean isExists(long id);
+	
 
 }

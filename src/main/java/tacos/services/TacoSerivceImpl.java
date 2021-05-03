@@ -39,6 +39,7 @@ public class TacoSerivceImpl implements ITacoService {
 	}
 
 	@Override
+	@Transactional
 	public Taco update(Taco taco) {
 		if (taco != null) {
 			return tacoRepository.save(taco);
@@ -47,8 +48,14 @@ public class TacoSerivceImpl implements ITacoService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(long id) {
 		tacoRepository.deleteById(id);
+	}
+	
+	@Override
+	public boolean isExists(long id) {
+		return tacoRepository.existsById(id);
 	}
 
 }
